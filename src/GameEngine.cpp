@@ -4,9 +4,13 @@
 GameEngine::GameEngine(const std::string & gameConfigPath){
 	int W = 720;
 	int H = 405;
+
+	m_assets = Assets(gameConfigPath);
 	m_window.create(sf::VideoMode({W, H}), "Game Window");
 	m_window.setFramerateLimit(60);
 	changeScene("MENU", std::make_shared<SceneMenu>(this));
+
+
 }
 
 void GameEngine::run(){
@@ -30,6 +34,10 @@ void GameEngine::changeScene(const std::string & sceneName, std::shared_ptr<Scen
 
 std::shared_ptr<Scene> GameEngine::getScene(const std::string & sceneName){
 	return m_sceneMap[sceneName];
+}
+
+Assets & GameEngine::getAssets(){
+	return m_assets;
 }
 
 void GameEngine::sUserInput(){

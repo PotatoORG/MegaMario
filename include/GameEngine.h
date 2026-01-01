@@ -1,6 +1,7 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 #include "Scene.h"
+#include "Assets.h"
 #include <SFML/Window.hpp>
 #include <memory>
 
@@ -12,6 +13,7 @@ class GameEngine{
 	bool m_isRunning = true;
 	size_t m_currentFrame;
 	std::shared_ptr<Scene> m_currentScene;
+	Assets m_assets;
 public:
 	GameEngine(const std::string & gameConfigPath);
 	void run();
@@ -21,5 +23,6 @@ public:
 	void quit();
 	sf::RenderWindow & window();
 	std::shared_ptr<Scene> getScene(const std::string & sceneName);
+	Assets & getAssets();
 };
 #endif

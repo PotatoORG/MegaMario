@@ -1,6 +1,6 @@
 #include "GameEngine.h"
 
 int main(){
-	GameEngine g("lol");
+	GameEngine g("testConf.txt");
 	g.run();
 }
