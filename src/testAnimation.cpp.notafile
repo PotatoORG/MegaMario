@@ -1,0 +1,20 @@
+#include "Animation.h"
+#include <SFML/Graphics.hpp>
+
+int main(){
+	sf::Texture texture;
+	texture.loadFromFile("assets/images/animations/coinspin64.png");
+
+	Animation animation(texture, 6, 10);
+	sf::RenderWindow window;
+	window.setFramerateLimit(60);
+	window.create(sf::VideoMode({720, 1280}), "Test Animation");
+
+	while (window.isOpen()){
+		animation.update();
+		window.clear();
+		window.draw(animation.getSprite());
+		window.display();
+	}
+	return 0;
+}

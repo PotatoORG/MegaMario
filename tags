@@ -1,0 +1,186 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/chetan/code/random/comp4300/a3/MegaMario/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(TARGET)	Makefile	/^$(TARGET): $(OBJS)$/;"	t
+ACTION_H	include/Action.h	/^#define ACTION_H$/;"	d
+ANIMATION_H	include/Animation.h	/^#define ANIMATION_H$/;"	d
+ASSETS_H	include/Assets.h	/^#define ASSETS_H$/;"	d
+Action	include/Action.h	/^	Action() {}$/;"	f	class:Action
+Action	include/Action.h	/^	Action(eActionName name, eActionType type) : name(name), type(type) {}$/;"	f	class:Action
+Action	include/Action.h	/^class Action{$/;"	c
+ActionMap	include/Scene.h	/^typedef std::map<sf::Keyboard::Key, Action> ActionMap;$/;"	t	typeref:typename:std::map<sf::Keyboard::Key,Action>
+Animation	include/Animation.h	/^class Animation{$/;"	c
+Animation	src/Animation.cpp	/^Animation::Animation() {}$/;"	f	class:Animation
+Animation	src/Animation.cpp	/^Animation::Animation(sf::Texture & texture, size_t frameCount, size_t duration)$/;"	f	class:Animation
+Assets	include/Assets.h	/^	Assets() {}$/;"	f	class:Assets
+Assets	include/Assets.h	/^class Assets{$/;"	c
+Assets	src/Assets.cpp	/^Assets::Assets(const std::string & path){$/;"	f	class:Assets
+CAnimation	include/Components.h	/^		CAnimation(sf::Texture & texture, size_t frameCount, size_t duration) : animation(texture, fra/;"	f	class:CAnimation
+CAnimation	include/Components.h	/^class CAnimation{$/;"	c
+CBoundingBox	include/Components.h	/^		CBoundingBox(Vec2 box) : box(box) {}$/;"	f	class:CBoundingBox
+CBoundingBox	include/Components.h	/^class CBoundingBox{$/;"	c
+CLifeSpan	include/Components.h	/^	CLifeSpan(float span)$/;"	f	class:CLifeSpan
+CLifeSpan	include/Components.h	/^class CLifeSpan{$/;"	c
+COMPONENTS_H	include/Components.h	/^#define COMPONENTS_H$/;"	d
+CTag	include/Components.h	/^enum CTag{$/;"	g
+CTransform	include/Components.h	/^		CTransform(Vec2 pos, Vec2 vel, float angle)$/;"	f	class:CTransform
+CTransform	include/Components.h	/^class CTransform{$/;"	c
+CXX	Makefile	/^CXX = g++$/;"	m
+DOWN	include/Action.h	/^	DOWN,$/;"	e	enum:eActionName
+END	include/Action.h	/^	END,$/;"	e	enum:eActionType
+ENTITY_H	include/Entity.h	/^#define ENTITY_H$/;"	d
+ENTITY_MANAGER_H	include/EntityManager.h	/^#define ENTITY_MANAGER_H$/;"	d
+ENUM_CTAG	include/Components.h	/^#define ENUM_CTAG$/;"	d
+EXIT	include/Action.h	/^	EXIT,$/;"	e	enum:eActionName
+Entity	include/Entity.h	/^class Entity{$/;"	c
+Entity	src/Entity.cpp	/^Entity::Entity(const size_t id, const CTag tag)$/;"	f	class:Entity
+EntityManager	include/EntityManager.h	/^class EntityManager{$/;"	c
+EntityManager	src/EntityManager.cpp	/^EntityManager::EntityManager() {}$/;"	f	class:EntityManager
+EntityMap	include/EntityManager.h	/^typedef std::map<CTag, EntityVec> EntityMap;$/;"	t	typeref:typename:std::map<CTag,EntityVec>
+EntityVec	include/EntityManager.h	/^typedef std::vector<std::shared_ptr<Entity>> EntityVec;$/;"	t	typeref:typename:std::vector<std::shared_ptr<Entity>>
+GAMEENGINE_H	include/GameEngine.h	/^#define GAMEENGINE_H$/;"	d
+GameEngine	include/GameEngine.h	/^class GameEngine{$/;"	c
+GameEngine	src/GameEngine.cpp	/^GameEngine::GameEngine(const std::string & gameConfigPath){$/;"	f	class:GameEngine
+JUMP	include/Action.h	/^	JUMP,$/;"	e	enum:eActionName
+LDFLAGS	Makefile	/^LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system$/;"	m
+LEFT	include/Action.h	/^	LEFT,$/;"	e	enum:eActionName
+MegaMario	README.md	/^# MegaMario$/;"	c
+NONE	include/Action.h	/^	NONE = 0,$/;"	e	enum:eActionName
+OBJS	Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+PAUSE	include/Action.h	/^	PAUSE,$/;"	e	enum:eActionName
+PLAY	include/Action.h	/^	PLAY,$/;"	e	enum:eActionName
+RIGHT	include/Action.h	/^	RIGHT,$/;"	e	enum:eActionName
+SCENE_H	include/Scene.h	/^#define SCENE_H$/;"	d
+SHOOT	include/Action.h	/^	SHOOT,$/;"	e	enum:eActionName
+SRCS	Makefile	/^SRCS = $(wildcard src\/*.cpp)$/;"	m
+START	include/Action.h	/^	START = 0,$/;"	e	enum:eActionType
+Scene	include/Scene.h	/^class Scene{$/;"	c
+SceneMap	include/GameEngine.h	/^typedef std::map<const std::string, std::shared_ptr<Scene>> SceneMap;$/;"	t	typeref:typename:std::map<const std::string,std::shared_ptr<Scene>>
+SceneMenu	include/Scene.h	/^class SceneMenu : public Scene{$/;"	c
+SceneMenu	src/SceneMenu.cpp	/^SceneMenu::SceneMenu(GameEngine *ge){$/;"	f	class:SceneMenu
+ScenePlay	include/Scene.h	/^class ScenePlay : public Scene{$/;"	c
+ScenePlay	src/ScenePlay.cpp	/^ScenePlay::ScenePlay(GameEngine * ge, const std::string & levelConfigPath){$/;"	f	class:ScenePlay
+TARGET	Makefile	/^TARGET = game.out$/;"	m
+UP	include/Action.h	/^	UP,$/;"	e	enum:eActionName
+VEC2_H	include/Vec2.h	/^#define VEC2_H$/;"	d
+Vec2	include/Vec2.h	/^class Vec2{$/;"	c
+Vec2	src/Vec2.cpp	/^Vec2::Vec2() {}$/;"	f	class:Vec2
+Vec2	src/Vec2.cpp	/^Vec2::Vec2(float vec[2]){$/;"	f	class:Vec2
+Vec2	src/Vec2.cpp	/^Vec2::Vec2(float xin, float yin)$/;"	f	class:Vec2
+addAnimation	src/Assets.cpp	/^std::shared_ptr<Animation> Assets::addAnimation(const std::string & name, const std::string & te/;"	f	class:Assets	typeref:typename:std::shared_ptr<Animation>
+addEntity	src/EntityManager.cpp	/^std::shared_ptr<Entity> EntityManager::addEntity(const CTag& tag){$/;"	f	class:EntityManager	typeref:typename:std::shared_ptr<Entity>
+addFont	src/Assets.cpp	/^std::shared_ptr<sf::Font> Assets::addFont(const std::string & name, const std::string & path){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Font>
+addTexture	src/Assets.cpp	/^std::shared_ptr<sf::Texture> Assets::addTexture(const std::string & name, const std::string & pa/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Texture>
+all	Makefile	/^all: $(TARGET)$/;"	t
+angle	include/Components.h	/^		float angle = 0.0;$/;"	m	class:CTransform	typeref:typename:float
+animation	include/Components.h	/^		Animation animation;$/;"	m	class:CAnimation	typeref:typename:Animation
+box	include/Components.h	/^		Vec2 box;$/;"	m	class:CBoundingBox	typeref:typename:Vec2
+bullet	include/Components.h	/^	bullet,$/;"	e	enum:CTag
+cAnimation	include/Entity.h	/^	std::shared_ptr<CAnimation> cAnimation;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CAnimation>
+cBoundingBox	include/Entity.h	/^	std::shared_ptr<CBoundingBox> cBoundingBox;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CBoundingBox>
+cLifeSpan	include/Entity.h	/^	std::shared_ptr<CLifeSpan> 	cLifeSpan;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CLifeSpan>
+cTransform	include/Entity.h	/^	std::shared_ptr<CTransform> cTransform;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CTransform>
+changeScene	src/GameEngine.cpp	/^void GameEngine::changeScene(const std::string & sceneName, std::shared_ptr<Scene> s){$/;"	f	class:GameEngine	typeref:typename:void
+clean	Makefile	/^clean:$/;"	t
+defaultTag	include/Components.h	/^	defaultTag,$/;"	e	enum:CTag
+destroy	src/Entity.cpp	/^void Entity::destroy(){$/;"	f	class:Entity	typeref:typename:void
+distance	src/Vec2.cpp	/^float Vec2::distance(const Vec2& a) const{$/;"	f	class:Vec2	typeref:typename:float
+doAction	src/SceneMenu.cpp	/^void SceneMenu::doAction(Action a){$/;"	f	class:SceneMenu	typeref:typename:void
+doAction	src/ScenePlay.cpp	/^void ScenePlay::doAction(Action a){$/;"	f	class:ScenePlay	typeref:typename:void
+eActionName	include/Action.h	/^enum eActionName{$/;"	g
+eActionType	include/Action.h	/^enum eActionType{$/;"	g
+enemy	include/Components.h	/^	enemy,$/;"	e	enum:CTag
+gameEngine	include/Scene.h	/^	GameEngine	*gameEngine;$/;"	m	class:Scene	typeref:typename:GameEngine *
+getActionMap	src/Scene.cpp	/^ActionMap & Scene::getActionMap(){$/;"	f	class:Scene	typeref:typename:ActionMap &
+getAnimation	src/Assets.cpp	/^std::shared_ptr<Animation> Assets::getAnimation(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<Animation>
+getAssets	src/GameEngine.cpp	/^Assets & GameEngine::getAssets(){$/;"	f	class:GameEngine	typeref:typename:Assets &
+getEntities	src/EntityManager.cpp	/^EntityVec& EntityManager::getEntities(){$/;"	f	class:EntityManager	typeref:typename:EntityVec &
+getEntities	src/EntityManager.cpp	/^EntityVec& EntityManager::getEntities(CTag tag){$/;"	f	class:EntityManager	typeref:typename:EntityVec &
+getFont	src/Assets.cpp	/^std::shared_ptr<sf::Font> Assets::getFont(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Font>
+getScene	src/GameEngine.cpp	/^std::shared_ptr<Scene> GameEngine::getScene(const std::string & sceneName){$/;"	f	class:GameEngine	typeref:typename:std::shared_ptr<Scene>
+getSize	src/Animation.cpp	/^Vec2 & Animation::getSize(){$/;"	f	class:Animation	typeref:typename:Vec2 &
+getSprite	src/Animation.cpp	/^sf::Sprite	& Animation::getSprite(){$/;"	f	class:Animation	typeref:typename:sf::Sprite &
+getTexture	src/Assets.cpp	/^std::shared_ptr<sf::Texture> Assets::getTexture(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Texture>
+hasEnded	src/Animation.cpp	/^bool Animation::hasEnded(){$/;"	f	class:Animation	typeref:typename:bool
+id	src/Entity.cpp	/^size_t Entity::id() const{$/;"	f	class:Entity	typeref:typename:size_t
+initial	include/Components.h	/^	float initial;$/;"	m	class:CLifeSpan	typeref:typename:float
+isAlive	src/Entity.cpp	/^bool Entity::isAlive() const{$/;"	f	class:Entity	typeref:typename:bool
+length	src/Vec2.cpp	/^float Vec2::length() const{$/;"	f	class:Vec2	typeref:typename:float
+m_actionMap	include/Scene.h	/^	ActionMap	m_actionMap;$/;"	m	class:Scene	typeref:typename:ActionMap
+m_alive	include/Entity.h	/^	bool m_alive = true;$/;"	m	class:Entity	typeref:typename:bool
+m_animations	include/Assets.h	/^	std::map<std::string, std::shared_ptr<Animation>> m_animations;$/;"	m	class:Assets	typeref:typename:std::map<std::string,std::shared_ptr<Animation>>
+m_assets	include/GameEngine.h	/^	Assets m_assets;$/;"	m	class:GameEngine	typeref:typename:Assets
+m_currentFrame	include/Animation.h	/^	size_t m_currentFrame = 0; \/\/ frame of animation to display in this frame of game.$/;"	m	class:Animation	typeref:typename:size_t
+m_currentFrame	include/GameEngine.h	/^	size_t m_currentFrame;$/;"	m	class:GameEngine	typeref:typename:size_t
+m_currentScene	include/GameEngine.h	/^	std::shared_ptr<Scene> m_currentScene;$/;"	m	class:GameEngine	typeref:typename:std::shared_ptr<Scene>
+m_entities	include/EntityManager.h	/^	EntityVec m_entities;$/;"	m	class:EntityManager	typeref:typename:EntityVec
+m_entityManager	include/Scene.h	/^	EntityManager	m_entityManager;$/;"	m	class:Scene	typeref:typename:EntityManager
+m_entityMap	include/EntityManager.h	/^	EntityMap m_entityMap;$/;"	m	class:EntityManager	typeref:typename:EntityMap
+m_font	include/Scene.h	/^	sf::Font m_font;$/;"	m	class:SceneMenu	typeref:typename:sf::Font
+m_font	include/Scene.h	/^	sf::Font m_font;$/;"	m	class:ScenePlay	typeref:typename:sf::Font
+m_fonts	include/Assets.h	/^	std::map<std::string, std::shared_ptr<sf::Font>> m_fonts;$/;"	m	class:Assets	typeref:typename:std::map<std::string,std::shared_ptr<sf::Font>>
+m_frameCount	include/Animation.h	/^	size_t m_frameCount; \/\/ Number of frames in animation in which it will be looping.$/;"	m	class:Animation	typeref:typename:size_t
+m_frameDuration	include/Animation.h	/^	size_t m_frameDuration; \/\/ Number of game frames one frame of animation will be displayed.$/;"	m	class:Animation	typeref:typename:size_t
+m_frameLength	include/Animation.h	/^	size_t m_frameLength;$/;"	m	class:Animation	typeref:typename:size_t
+m_frameWidth	include/Animation.h	/^	size_t m_frameWidth;$/;"	m	class:Animation	typeref:typename:size_t
+m_gameFrame	include/Animation.h	/^	size_t m_gameFrame = 0; \/\/ Number of game frames this animation has been alive.$/;"	m	class:Animation	typeref:typename:size_t
+m_hasEnded	include/Scene.h	/^	bool m_hasEnded = false;$/;"	m	class:Scene	typeref:typename:bool
+m_id	include/Entity.h	/^	size_t m_id = 0;$/;"	m	class:Entity	typeref:typename:size_t
+m_isRunning	include/GameEngine.h	/^	bool m_isRunning = true;$/;"	m	class:GameEngine	typeref:typename:bool
+m_paused	include/Scene.h	/^	bool m_paused = false;$/;"	m	class:Scene	typeref:typename:bool
+m_player	include/Scene.h	/^	std::shared_ptr<Entity> m_player;$/;"	m	class:ScenePlay	typeref:typename:std::shared_ptr<Entity>
+m_sceneMap	include/GameEngine.h	/^	SceneMap m_sceneMap;$/;"	m	class:GameEngine	typeref:typename:SceneMap
+m_size	include/Animation.h	/^	Vec2 m_size; \/\/ Size of rectangle in the texture given to the animation.$/;"	m	class:Animation	typeref:typename:Vec2
+m_sprite	include/Animation.h	/^	sf::Sprite m_sprite;$/;"	m	class:Animation	typeref:typename:sf::Sprite
+m_tag	include/Entity.h	/^	CTag m_tag = defaultTag;$/;"	m	class:Entity	typeref:typename:CTag
+m_text	include/Scene.h	/^	sf::Text m_text;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
+m_text	include/Scene.h	/^	sf::Text m_text;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
+m_textures	include/Assets.h	/^	std::map<std::string, std::shared_ptr<sf::Texture>> m_textures;$/;"	m	class:Assets	typeref:typename:std::map<std::string,std::shared_ptr<sf::Texture>>
+m_title	include/Scene.h	/^	sf::Text m_title;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
+m_title	include/Scene.h	/^	sf::Text m_title;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
+m_toAdd	include/EntityManager.h	/^	EntityVec m_toAdd;$/;"	m	class:EntityManager	typeref:typename:EntityVec
+m_totalEntities	include/EntityManager.h	/^	size_t	  m_totalEntities = 0;$/;"	m	class:EntityManager	typeref:typename:size_t
+m_window	include/GameEngine.h	/^	sf::RenderWindow m_window;$/;"	m	class:GameEngine	typeref:typename:sf::RenderWindow
+main	src/main.cpp	/^int main(){$/;"	f	typeref:typename:int
+name	include/Action.h	/^	eActionName name;$/;"	m	class:Action	typeref:typename:eActionName
+operator !=	src/Vec2.cpp	/^bool Vec2::operator != (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:bool
+operator *	src/Vec2.cpp	/^Vec2 Vec2::operator * (const float& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
+operator *=	src/Vec2.cpp	/^void Vec2::operator *= (const float& rhs){$/;"	f	class:Vec2	typeref:typename:void
+operator +	src/Vec2.cpp	/^Vec2 Vec2::operator + (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
+operator +=	src/Vec2.cpp	/^void Vec2::operator += (const Vec2& rhs){$/;"	f	class:Vec2	typeref:typename:void
+operator -	src/Vec2.cpp	/^Vec2 Vec2::operator - (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
+operator -=	src/Vec2.cpp	/^void Vec2::operator -= (const Vec2& rhs){$/;"	f	class:Vec2	typeref:typename:void
+operator ==	src/Vec2.cpp	/^bool Vec2::operator == (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:bool
+player	include/Components.h	/^	player,$/;"	e	enum:CTag
+pos	include/Components.h	/^		Vec2 pos = {0.0, 0.0};$/;"	m	class:CTransform	typeref:typename:Vec2
+prevPos	include/Components.h	/^		Vec2 prevPos = {0.0, 0.0};$/;"	m	class:CTransform	typeref:typename:Vec2
+print	src/Vec2.cpp	/^void Vec2::print() const{$/;"	f	class:Vec2	typeref:typename:void
+quit	src/GameEngine.cpp	/^void GameEngine::quit(){$/;"	f	class:GameEngine	typeref:typename:void
+registerAction	src/Scene.cpp	/^void Scene::registerAction(sf::Keyboard::Key key, Action a){$/;"	f	class:Scene	typeref:typename:void
+remaining	include/Components.h	/^	float remaining;$/;"	m	class:CLifeSpan	typeref:typename:float
+removeDeadEntities	src/EntityManager.cpp	/^void EntityManager::removeDeadEntities(){$/;"	f	class:EntityManager	typeref:typename:void
+run	src/GameEngine.cpp	/^void GameEngine::run(){$/;"	f	class:GameEngine	typeref:typename:void
+sUserInput	src/GameEngine.cpp	/^void GameEngine::sUserInput(){$/;"	f	class:GameEngine	typeref:typename:void
+spawnPlayer	src/ScenePlay.cpp	/^void ScenePlay::spawnPlayer(){$/;"	f	class:ScenePlay	typeref:typename:void
+src/%.o	Makefile	/^src\/%.o: src\/%.cpp$/;"	t
+tag	src/Entity.cpp	/^const CTag& Entity::tag() const{$/;"	f	class:Entity	typeref:typename:const CTag &
+text	include/Components.h	/^	text,$/;"	e	enum:CTag
+tile	include/Components.h	/^	tile$/;"	e	enum:CTag
+type	include/Action.h	/^	eActionType type;$/;"	m	class:Action	typeref:typename:eActionType
+update	src/Animation.cpp	/^void Animation::update(){$/;"	f	class:Animation	typeref:typename:void
+update	src/EntityManager.cpp	/^void EntityManager::update(){$/;"	f	class:EntityManager	typeref:typename:void
+update	src/GameEngine.cpp	/^void GameEngine::update(){$/;"	f	class:GameEngine	typeref:typename:void
+update	src/SceneMenu.cpp	/^void SceneMenu::update(){$/;"	f	class:SceneMenu	typeref:typename:void
+update	src/ScenePlay.cpp	/^void ScenePlay::update(){$/;"	f	class:ScenePlay	typeref:typename:void
+velocity	include/Components.h	/^		Vec2 velocity = {0.0, 0.0};$/;"	m	class:CTransform	typeref:typename:Vec2
+window	src/GameEngine.cpp	/^sf::RenderWindow & GameEngine::window(){$/;"	f	class:GameEngine	typeref:typename:sf::RenderWindow &
+x	include/Vec2.h	/^	float x {0};$/;"	m	class:Vec2	typeref:typename:float
+y	include/Vec2.h	/^	float y {0};$/;"	m	class:Vec2	typeref:typename:float

@@ -5,7 +5,7 @@
 SceneMenu::SceneMenu(GameEngine *ge){
 	gameEngine = ge;
 
-	ge->window().clear(sf::Color::Blue);
+	gameEngine->window().clear(sf::Color::Blue);
 	gameEngine->window().display();
 
 	Scene::registerAction(sf::Keyboard::W, {UP, START});
@@ -13,13 +13,15 @@ SceneMenu::SceneMenu(GameEngine *ge){
 	Scene::registerAction(sf::Keyboard::Escape, {EXIT, START});
 	Scene::registerAction(sf::Keyboard::D, {PLAY, START});
 
-	m_font.loadFromFile("include/BebasNeue-Regular.ttf");
+	m_font = *(gameEngine->getAssets().getFont("FONT"));
+	//m_font.loadFromFile("include/BebasNeue-Regular.ttf");
 	m_title.setFont(m_font);
 	m_title.setString("The Game");
 	m_title.setPosition({200, 200});
 	m_title.setCharacterSize(40);
 	m_title.setFillColor(sf::Color::White);
 	gameEngine->window().draw(m_title);
+	std::cout << "Scene Menu instantiated\n";
 }
 
 void SceneMenu::update(){
@@ -41,7 +43,7 @@ void SceneMenu::doAction(Action a){
 			break;
 		case (PLAY):
 			std::cout << "PLAY Action passed.\n";
-			gameEngine->changeScene("PLAY", std::make_shared<ScenePlay>(gameEngine));
+			gameEngine->changeScene("PLAY", std::make_shared<ScenePlay>(gameEngine, "LOL"));
 			break;
 	}
 }
