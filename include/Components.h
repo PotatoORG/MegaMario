@@ -27,6 +27,9 @@ class CTransform{
 
 		CTransform(Vec2 pos, Vec2 vel, float angle)
 			: pos (pos), velocity (vel), angle (angle) {}
+
+		CTransform(Vec2 pos)
+			: pos (pos) {}
 };
 
 class CAnimation{

@@ -20,6 +20,7 @@ public:
 	void registerActions();
 	void spawnPlayer();
 	void spawnTile(const std::string & animationName, int GX, int GY);
+	void spawnDecoration(const std::string & animationName, float x, float y);
 	void makeLevel(const std::string & levelConfigPath);
 
 	void sRender(); // Systems

@@ -26,8 +26,8 @@ ScenePlay::ScenePlay(GameEngine * ge, const std::string & levelConfigPath){
 	//m_player.setTexture(*(gameEngine->getAssets().getTexture("MEGA")));
 	gameEngine->window().draw(m_title);
 
-	auto coin = m_entityManager.addEntity(decoration);
-	coin->cAnimation = gameEngine->getAssets().getAnimation("EXPLOSION");
+	//auto coin = m_entityManager.addEntity(decoration);
+	//coin->cAnimation = gameEngine->getAssets().getAnimation("EXPLOSION");
 
 }
 
@@ -49,6 +49,7 @@ void ScenePlay::makeLevel(const std::string & levelConfigPath){
 			file >> N >> X >> Y;
 			// TODO
 			// ADD DEC ENTITY AND SET ITS POSITION.
+			spawnDecoration(N, X, Y);
 		} else if (temp == "player"){
 			file >> m_playerConfig.GX \
 				>> m_playerConfig.GY \
@@ -70,9 +71,17 @@ void ScenePlay::spawnTile(const std::string & animationName, int GX, int GY){
 	t->cAnimation = gameEngine->getAssets().getAnimation(animationName);
 	int x = 64*GX;
 	int y = 720 - 64 - 64*GY;
-	t->cTransform = std::make_shared<CTransform>(Vec2(x, y), Vec2(0, 0), 0);
+	t->cTransform = std::make_shared<CTransform>(Vec2(x, y));
 	t->cAnimation->getSprite().setPosition(x, y);
 	std::cout << "Tile created at (" << GX << ", " << GY << ") in grid and (" << x << ", " << y << ") in window\n"; 
+}
+
+void ScenePlay::spawnDecoration(const std::string & animationName, float x, float y){
+	auto d = m_entityManager.addEntity(decoration);
+	d->cAnimation = gameEngine->getAssets().getAnimation(animationName);
+	d->cTransform = std::make_shared<CTransform>(Vec2(x, y));
+	d->cAnimation->getSprite().setPosition(x, y);
+	std::cout << "Decoration created at (" << x << ", " << y << ") in window\n"; 
 }
 
 void ScenePlay::spawnPlayer(){
@@ -118,6 +127,17 @@ void ScenePlay::sRender(){
 			tile->cAnimation->getSprite().setPosition(pos.x, pos.y);
 		}
 		gameEngine->window().draw(tile->cAnimation->getSprite());
+		//std::cout << "Entity drawn\n";
+	}
+
+	auto & decorations = m_entityManager.getEntities(decoration);
+	for (auto & dec : decorations){
+		dec->cAnimation->update();
+		if (dec->cTransform){
+			Vec2 pos = dec->cTransform->pos;
+			dec->cAnimation->getSprite().setPosition(pos.x, pos.y);
+		}
+		gameEngine->window().draw(dec->cAnimation->getSprite());
 		//std::cout << "Entity drawn\n";
 	}
 	//gameEngine->window().draw(m_entityManager.getEntities())
