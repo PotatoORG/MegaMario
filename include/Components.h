@@ -13,7 +13,8 @@ enum CTag{
 	enemy,
 	player,
 	text,
-	tile
+	tile,
+	decoration
 };
 #endif
 

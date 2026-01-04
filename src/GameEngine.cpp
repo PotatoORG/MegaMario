@@ -1,4 +1,5 @@
 #include "GameEngine.h"
+#include "SceneMenu.h"
 #include <iostream>
 
 GameEngine::GameEngine(const std::string & gameConfigPath){

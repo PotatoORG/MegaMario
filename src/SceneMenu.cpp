@@ -1,5 +1,6 @@
 #include "GameEngine.h"
-#include "Scene.h"
+#include "SceneMenu.h"
+#include "ScenePlay.h"
 #include <iostream>
 
 SceneMenu::SceneMenu(GameEngine *ge){
@@ -43,7 +44,7 @@ void SceneMenu::doAction(Action a){
 			break;
 		case (PLAY):
 			std::cout << "PLAY Action passed.\n";
-			gameEngine->changeScene("PLAY", std::make_shared<ScenePlay>(gameEngine, "LOL"));
+			gameEngine->changeScene("PLAY", std::make_shared<ScenePlay>(gameEngine, "levelConf.txt"));
 			break;
 	}
 }

@@ -1,35 +1,49 @@
-# Compiler
-CXX = g++
+CC = g++
+FLAGS = -O3 -Iinclude
+INC_SFML_FLAG = -lsfml-system -lsfml-window -lsfml-graphics
+OBJS = src/Animation.o \
+	   src/Assets.o \
+	   src/Entity.o \
+	   src/EntityManager.o \
+	   src/GameEngine.o \
+	   src/main.o \
+	   src/Scene.o \
+	   src/SceneMenu.o \
+	   src/ScenePlay.o \
+	   src/Vec2.o
 
-# Compiler flags
-CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
+game.out : $(OBJS)
+	${CC} $^ -o $@ ${INC_SFML_FLAG}
 
-# SFML libraries
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+src/EntityManager.o : src/EntityManager.cpp
+	${CC} ${FLAGS}  -c $^ -o $@ 
 
-# Source files
-SRCS = $(wildcard src/*.cpp)
+src/Animation.o : src/Animation.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+src/Assets.o : src/Assets.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Output executable
-TARGET = game.out
+src/Scene.o : src/Scene.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Default target
-all: $(TARGET)
+src/SceneMenu.o : src/SceneMenu.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Link
-$(TARGET): $(OBJS)
-	$(CXX) $(OBJS) -o $(TARGET) $(LDFLAGS)
+src/ScenePlay.o : src/ScenePlay.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Compile
-src/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+src/Entity.o : src/Entity.cpp 
+	${CC} ${FLAGS}  -c $^ -o $@
 
-# Clean
-clean:
-	rm -f src/*.o $(TARGET)
+src/Vec2.o : src/Vec2.cpp
+	${CC} ${FLAGS}  -c $^ -o $@
 
-.PHONY: all clean
+src/GameEngine.o : src/GameEngine.cpp
+	${CC} ${FLAGS}  -c $^ -o $@
 
+src/main.o : src/main.cpp
+	${CC} ${FLAGS}  -c $^ -o $@
+
+clean :
+	rm -f src/*.o game.out

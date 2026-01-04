@@ -2,4 +2,7 @@ font FONT include/BebasNeue-Regular.ttf
 texture MEGA assets/images/megaman/megaStand64.png
 texture GROUND assets/images/mario/ground64.png
 texture COIN assets/images/animations/coinspin64.png
+texture EXPLOSION assets/images/animations/explosion.png
 animation COINSPIN COIN 6 20
+animation EXPLOSION EXPLOSION 12 8
+animation GROUND GROUND 1 1

@@ -9,7 +9,6 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-$(TARGET)	Makefile	/^$(TARGET): $(OBJS)$/;"	t
 ACTION_H	include/Action.h	/^#define ACTION_H$/;"	d
 ANIMATION_H	include/Animation.h	/^#define ANIMATION_H$/;"	d
 ASSETS_H	include/Assets.h	/^#define ASSETS_H$/;"	d
@@ -23,17 +22,20 @@ Animation	src/Animation.cpp	/^Animation::Animation(sf::Texture & texture, size_t
 Assets	include/Assets.h	/^	Assets() {}$/;"	f	class:Assets
 Assets	include/Assets.h	/^class Assets{$/;"	c
 Assets	src/Assets.cpp	/^Assets::Assets(const std::string & path){$/;"	f	class:Assets
-CAnimation	include/Components.h	/^		CAnimation(sf::Texture & texture, size_t frameCount, size_t duration) : animation(texture, fra/;"	f	class:CAnimation
+B	include/ScenePlay.h	/^	std::string B;$/;"	m	struct:PlayerConfig	typeref:typename:std::string
+CAnimation	include/Components.h	/^		CAnimation() {}$/;"	f	class:CAnimation
 CAnimation	include/Components.h	/^class CAnimation{$/;"	c
 CBoundingBox	include/Components.h	/^		CBoundingBox(Vec2 box) : box(box) {}$/;"	f	class:CBoundingBox
 CBoundingBox	include/Components.h	/^class CBoundingBox{$/;"	c
+CC	Makefile	/^CC = g++$/;"	m
+CH	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 CLifeSpan	include/Components.h	/^	CLifeSpan(float span)$/;"	f	class:CLifeSpan
 CLifeSpan	include/Components.h	/^class CLifeSpan{$/;"	c
 COMPONENTS_H	include/Components.h	/^#define COMPONENTS_H$/;"	d
 CTag	include/Components.h	/^enum CTag{$/;"	g
 CTransform	include/Components.h	/^		CTransform(Vec2 pos, Vec2 vel, float angle)$/;"	f	class:CTransform
 CTransform	include/Components.h	/^class CTransform{$/;"	c
-CXX	Makefile	/^CXX = g++$/;"	m
+CW	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 DOWN	include/Action.h	/^	DOWN,$/;"	e	enum:eActionName
 END	include/Action.h	/^	END,$/;"	e	enum:eActionType
 ENTITY_H	include/Entity.h	/^#define ENTITY_H$/;"	d
@@ -46,29 +48,36 @@ EntityManager	include/EntityManager.h	/^class EntityManager{$/;"	c
 EntityManager	src/EntityManager.cpp	/^EntityManager::EntityManager() {}$/;"	f	class:EntityManager
 EntityMap	include/EntityManager.h	/^typedef std::map<CTag, EntityVec> EntityMap;$/;"	t	typeref:typename:std::map<CTag,EntityVec>
 EntityVec	include/EntityManager.h	/^typedef std::vector<std::shared_ptr<Entity>> EntityVec;$/;"	t	typeref:typename:std::vector<std::shared_ptr<Entity>>
+G	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 GAMEENGINE_H	include/GameEngine.h	/^#define GAMEENGINE_H$/;"	d
+GX	include/ScenePlay.h	/^	int GX, GY;$/;"	m	struct:PlayerConfig	typeref:typename:int
+GY	include/ScenePlay.h	/^	int GX, GY;$/;"	m	struct:PlayerConfig	typeref:typename:int
 GameEngine	include/GameEngine.h	/^class GameEngine{$/;"	c
 GameEngine	src/GameEngine.cpp	/^GameEngine::GameEngine(const std::string & gameConfigPath){$/;"	f	class:GameEngine
+INC_SFML_FLAG	Makefile	/^INC_SFML_FLAG = -lsfml-system -lsfml-window -lsfml-graphics$/;"	m
 JUMP	include/Action.h	/^	JUMP,$/;"	e	enum:eActionName
-LDFLAGS	Makefile	/^LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system$/;"	m
 LEFT	include/Action.h	/^	LEFT,$/;"	e	enum:eActionName
 MegaMario	README.md	/^# MegaMario$/;"	c
 NONE	include/Action.h	/^	NONE = 0,$/;"	e	enum:eActionName
-OBJS	Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+OBJS	Makefile	/^OBJS = src\/Animation.o \\$/;"	m
 PAUSE	include/Action.h	/^	PAUSE,$/;"	e	enum:eActionName
 PLAY	include/Action.h	/^	PLAY,$/;"	e	enum:eActionName
+PlayerConfig	include/ScenePlay.h	/^struct PlayerConfig{$/;"	s
 RIGHT	include/Action.h	/^	RIGHT,$/;"	e	enum:eActionName
+SCENEMENU_H	include/SceneMenu.h	/^#define SCENEMENU_H$/;"	d
+SCENEPLAY_H	include/ScenePlay.h	/^#define SCENEPLAY_H$/;"	d
 SCENE_H	include/Scene.h	/^#define SCENE_H$/;"	d
 SHOOT	include/Action.h	/^	SHOOT,$/;"	e	enum:eActionName
-SRCS	Makefile	/^SRCS = $(wildcard src\/*.cpp)$/;"	m
+SM	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 START	include/Action.h	/^	START = 0,$/;"	e	enum:eActionType
+SX	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
+SY	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 Scene	include/Scene.h	/^class Scene{$/;"	c
 SceneMap	include/GameEngine.h	/^typedef std::map<const std::string, std::shared_ptr<Scene>> SceneMap;$/;"	t	typeref:typename:std::map<const std::string,std::shared_ptr<Scene>>
-SceneMenu	include/Scene.h	/^class SceneMenu : public Scene{$/;"	c
+SceneMenu	include/SceneMenu.h	/^class SceneMenu : public Scene{$/;"	c
 SceneMenu	src/SceneMenu.cpp	/^SceneMenu::SceneMenu(GameEngine *ge){$/;"	f	class:SceneMenu
-ScenePlay	include/Scene.h	/^class ScenePlay : public Scene{$/;"	c
+ScenePlay	include/ScenePlay.h	/^class ScenePlay : public Scene{$/;"	c
 ScenePlay	src/ScenePlay.cpp	/^ScenePlay::ScenePlay(GameEngine * ge, const std::string & levelConfigPath){$/;"	f	class:ScenePlay
-TARGET	Makefile	/^TARGET = game.out$/;"	m
 UP	include/Action.h	/^	UP,$/;"	e	enum:eActionName
 VEC2_H	include/Vec2.h	/^#define VEC2_H$/;"	d
 Vec2	include/Vec2.h	/^class Vec2{$/;"	c
@@ -79,17 +88,16 @@ addAnimation	src/Assets.cpp	/^std::shared_ptr<Animation> Assets::addAnimation(co
 addEntity	src/EntityManager.cpp	/^std::shared_ptr<Entity> EntityManager::addEntity(const CTag& tag){$/;"	f	class:EntityManager	typeref:typename:std::shared_ptr<Entity>
 addFont	src/Assets.cpp	/^std::shared_ptr<sf::Font> Assets::addFont(const std::string & name, const std::string & path){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Font>
 addTexture	src/Assets.cpp	/^std::shared_ptr<sf::Texture> Assets::addTexture(const std::string & name, const std::string & pa/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Texture>
-all	Makefile	/^all: $(TARGET)$/;"	t
 angle	include/Components.h	/^		float angle = 0.0;$/;"	m	class:CTransform	typeref:typename:float
-animation	include/Components.h	/^		Animation animation;$/;"	m	class:CAnimation	typeref:typename:Animation
+animation	include/Components.h	/^		std::shared_ptr<Animation> animation;$/;"	m	class:CAnimation	typeref:typename:std::shared_ptr<Animation>
 box	include/Components.h	/^		Vec2 box;$/;"	m	class:CBoundingBox	typeref:typename:Vec2
 bullet	include/Components.h	/^	bullet,$/;"	e	enum:CTag
-cAnimation	include/Entity.h	/^	std::shared_ptr<CAnimation> cAnimation;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CAnimation>
+cAnimation	include/Entity.h	/^	std::shared_ptr<Animation> cAnimation;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<Animation>
 cBoundingBox	include/Entity.h	/^	std::shared_ptr<CBoundingBox> cBoundingBox;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CBoundingBox>
 cLifeSpan	include/Entity.h	/^	std::shared_ptr<CLifeSpan> 	cLifeSpan;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CLifeSpan>
 cTransform	include/Entity.h	/^	std::shared_ptr<CTransform> cTransform;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CTransform>
 changeScene	src/GameEngine.cpp	/^void GameEngine::changeScene(const std::string & sceneName, std::shared_ptr<Scene> s){$/;"	f	class:GameEngine	typeref:typename:void
-clean	Makefile	/^clean:$/;"	t
+clean	Makefile	/^clean :$/;"	t
 defaultTag	include/Components.h	/^	defaultTag,$/;"	e	enum:CTag
 destroy	src/Entity.cpp	/^void Entity::destroy(){$/;"	f	class:Entity	typeref:typename:void
 distance	src/Vec2.cpp	/^float Vec2::distance(const Vec2& a) const{$/;"	f	class:Vec2	typeref:typename:float
@@ -98,6 +106,7 @@ doAction	src/ScenePlay.cpp	/^void ScenePlay::doAction(Action a){$/;"	f	class:Sce
 eActionName	include/Action.h	/^enum eActionName{$/;"	g
 eActionType	include/Action.h	/^enum eActionType{$/;"	g
 enemy	include/Components.h	/^	enemy,$/;"	e	enum:CTag
+game.out	Makefile	/^game.out : $(OBJS)$/;"	t
 gameEngine	include/Scene.h	/^	GameEngine	*gameEngine;$/;"	m	class:Scene	typeref:typename:GameEngine *
 getActionMap	src/Scene.cpp	/^ActionMap & Scene::getActionMap(){$/;"	f	class:Scene	typeref:typename:ActionMap &
 getAnimation	src/Assets.cpp	/^std::shared_ptr<Animation> Assets::getAnimation(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<Animation>
@@ -124,8 +133,8 @@ m_currentScene	include/GameEngine.h	/^	std::shared_ptr<Scene> m_currentScene;$/;
 m_entities	include/EntityManager.h	/^	EntityVec m_entities;$/;"	m	class:EntityManager	typeref:typename:EntityVec
 m_entityManager	include/Scene.h	/^	EntityManager	m_entityManager;$/;"	m	class:Scene	typeref:typename:EntityManager
 m_entityMap	include/EntityManager.h	/^	EntityMap m_entityMap;$/;"	m	class:EntityManager	typeref:typename:EntityMap
-m_font	include/Scene.h	/^	sf::Font m_font;$/;"	m	class:SceneMenu	typeref:typename:sf::Font
-m_font	include/Scene.h	/^	sf::Font m_font;$/;"	m	class:ScenePlay	typeref:typename:sf::Font
+m_font	include/SceneMenu.h	/^	sf::Font m_font;$/;"	m	class:SceneMenu	typeref:typename:sf::Font
+m_font	include/ScenePlay.h	/^	sf::Font m_font;$/;"	m	class:ScenePlay	typeref:typename:sf::Font
 m_fonts	include/Assets.h	/^	std::map<std::string, std::shared_ptr<sf::Font>> m_fonts;$/;"	m	class:Assets	typeref:typename:std::map<std::string,std::shared_ptr<sf::Font>>
 m_frameCount	include/Animation.h	/^	size_t m_frameCount; \/\/ Number of frames in animation in which it will be looping.$/;"	m	class:Animation	typeref:typename:size_t
 m_frameDuration	include/Animation.h	/^	size_t m_frameDuration; \/\/ Number of game frames one frame of animation will be displayed.$/;"	m	class:Animation	typeref:typename:size_t
@@ -136,20 +145,22 @@ m_hasEnded	include/Scene.h	/^	bool m_hasEnded = false;$/;"	m	class:Scene	typeref
 m_id	include/Entity.h	/^	size_t m_id = 0;$/;"	m	class:Entity	typeref:typename:size_t
 m_isRunning	include/GameEngine.h	/^	bool m_isRunning = true;$/;"	m	class:GameEngine	typeref:typename:bool
 m_paused	include/Scene.h	/^	bool m_paused = false;$/;"	m	class:Scene	typeref:typename:bool
-m_player	include/Scene.h	/^	std::shared_ptr<Entity> m_player;$/;"	m	class:ScenePlay	typeref:typename:std::shared_ptr<Entity>
+m_player	include/ScenePlay.h	/^	std::shared_ptr<Entity> m_player;$/;"	m	class:ScenePlay	typeref:typename:std::shared_ptr<Entity>
+m_playerConfig	include/ScenePlay.h	/^	PlayerConfig m_playerConfig;$/;"	m	class:ScenePlay	typeref:typename:PlayerConfig
 m_sceneMap	include/GameEngine.h	/^	SceneMap m_sceneMap;$/;"	m	class:GameEngine	typeref:typename:SceneMap
 m_size	include/Animation.h	/^	Vec2 m_size; \/\/ Size of rectangle in the texture given to the animation.$/;"	m	class:Animation	typeref:typename:Vec2
 m_sprite	include/Animation.h	/^	sf::Sprite m_sprite;$/;"	m	class:Animation	typeref:typename:sf::Sprite
 m_tag	include/Entity.h	/^	CTag m_tag = defaultTag;$/;"	m	class:Entity	typeref:typename:CTag
-m_text	include/Scene.h	/^	sf::Text m_text;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
-m_text	include/Scene.h	/^	sf::Text m_text;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
+m_text	include/SceneMenu.h	/^	sf::Text m_text;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
+m_text	include/ScenePlay.h	/^	sf::Text m_text;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
 m_textures	include/Assets.h	/^	std::map<std::string, std::shared_ptr<sf::Texture>> m_textures;$/;"	m	class:Assets	typeref:typename:std::map<std::string,std::shared_ptr<sf::Texture>>
-m_title	include/Scene.h	/^	sf::Text m_title;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
-m_title	include/Scene.h	/^	sf::Text m_title;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
+m_title	include/SceneMenu.h	/^	sf::Text m_title;$/;"	m	class:SceneMenu	typeref:typename:sf::Text
+m_title	include/ScenePlay.h	/^	sf::Text m_title;$/;"	m	class:ScenePlay	typeref:typename:sf::Text
 m_toAdd	include/EntityManager.h	/^	EntityVec m_toAdd;$/;"	m	class:EntityManager	typeref:typename:EntityVec
 m_totalEntities	include/EntityManager.h	/^	size_t	  m_totalEntities = 0;$/;"	m	class:EntityManager	typeref:typename:size_t
 m_window	include/GameEngine.h	/^	sf::RenderWindow m_window;$/;"	m	class:GameEngine	typeref:typename:sf::RenderWindow
 main	src/main.cpp	/^int main(){$/;"	f	typeref:typename:int
+makeLevel	src/ScenePlay.cpp	/^void ScenePlay::makeLevel(const std::string & levelConfigPath){$/;"	f	class:ScenePlay	typeref:typename:void
 name	include/Action.h	/^	eActionName name;$/;"	m	class:Action	typeref:typename:eActionName
 operator !=	src/Vec2.cpp	/^bool Vec2::operator != (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:bool
 operator *	src/Vec2.cpp	/^Vec2 Vec2::operator * (const float& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
@@ -165,12 +176,25 @@ prevPos	include/Components.h	/^		Vec2 prevPos = {0.0, 0.0};$/;"	m	class:CTransfo
 print	src/Vec2.cpp	/^void Vec2::print() const{$/;"	f	class:Vec2	typeref:typename:void
 quit	src/GameEngine.cpp	/^void GameEngine::quit(){$/;"	f	class:GameEngine	typeref:typename:void
 registerAction	src/Scene.cpp	/^void Scene::registerAction(sf::Keyboard::Key key, Action a){$/;"	f	class:Scene	typeref:typename:void
+registerActions	src/ScenePlay.cpp	/^void ScenePlay::registerActions(){$/;"	f	class:ScenePlay	typeref:typename:void
 remaining	include/Components.h	/^	float remaining;$/;"	m	class:CLifeSpan	typeref:typename:float
 removeDeadEntities	src/EntityManager.cpp	/^void EntityManager::removeDeadEntities(){$/;"	f	class:EntityManager	typeref:typename:void
 run	src/GameEngine.cpp	/^void GameEngine::run(){$/;"	f	class:GameEngine	typeref:typename:void
+sMovement	src/ScenePlay.cpp	/^void ScenePlay::sMovement(){$/;"	f	class:ScenePlay	typeref:typename:void
+sRender	src/ScenePlay.cpp	/^void ScenePlay::sRender(){$/;"	f	class:ScenePlay	typeref:typename:void
 sUserInput	src/GameEngine.cpp	/^void GameEngine::sUserInput(){$/;"	f	class:GameEngine	typeref:typename:void
 spawnPlayer	src/ScenePlay.cpp	/^void ScenePlay::spawnPlayer(){$/;"	f	class:ScenePlay	typeref:typename:void
-src/%.o	Makefile	/^src\/%.o: src\/%.cpp$/;"	t
+spawnTile	src/ScenePlay.cpp	/^void ScenePlay::spawnTile(const std::string & animationName, int GX, int GY){$/;"	f	class:ScenePlay	typeref:typename:void
+src/Animation.o	Makefile	/^src\/Animation.o : src\/Animation.cpp $/;"	t
+src/Assets.o	Makefile	/^src\/Assets.o : src\/Assets.cpp $/;"	t
+src/Entity.o	Makefile	/^src\/Entity.o : src\/Entity.cpp $/;"	t
+src/EntityManager.o	Makefile	/^src\/EntityManager.o : src\/EntityManager.cpp$/;"	t
+src/GameEngine.o	Makefile	/^src\/GameEngine.o : src\/GameEngine.cpp$/;"	t
+src/Scene.o	Makefile	/^src\/Scene.o : src\/Scene.cpp $/;"	t
+src/SceneMenu.o	Makefile	/^src\/SceneMenu.o : src\/SceneMenu.cpp $/;"	t
+src/ScenePlay.o	Makefile	/^src\/ScenePlay.o : src\/ScenePlay.cpp $/;"	t
+src/Vec2.o	Makefile	/^src\/Vec2.o : src\/Vec2.cpp$/;"	t
+src/main.o	Makefile	/^src\/main.o : src\/main.cpp$/;"	t
 tag	src/Entity.cpp	/^const CTag& Entity::tag() const{$/;"	f	class:Entity	typeref:typename:const CTag &
 text	include/Components.h	/^	text,$/;"	e	enum:CTag
 tile	include/Components.h	/^	tile$/;"	e	enum:CTag
