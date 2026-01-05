@@ -28,7 +28,6 @@ ScenePlay::ScenePlay(GameEngine * ge, const std::string & levelConfigPath){
 
 	//auto coin = m_entityManager.addEntity(decoration);
 	//coin->cAnimation = gameEngine->getAssets().getAnimation("EXPLOSION");
-
 }
 
 
@@ -73,7 +72,8 @@ void ScenePlay::spawnTile(const std::string & animationName, int GX, int GY){
 	int y = 720 - 64 - 64*GY;
 	t->cTransform = std::make_shared<CTransform>(Vec2(x, y));
 	t->cAnimation->getSprite().setPosition(x, y);
-	std::cout << "Tile created at (" << GX << ", " << GY << ") in grid and (" << x << ", " << y << ") in window\n"; 
+	//std::cout << "Tile created at (" << GX << ", " << GY << ") in grid and (" << x << ", " << y << ") in window\n"; 
+	t->cBoundingBox = std::make_shared<CBoundingBox>(Vec2(64, 64));
 }
 
 void ScenePlay::spawnDecoration(const std::string & animationName, float x, float y){
@@ -88,17 +88,16 @@ void ScenePlay::spawnPlayer(){
 	auto entity = m_entityManager.addEntity(player);
 
 	// texture here should be a shared pointer to the Texture object
-	auto texture = gameEngine->getAssets().getTexture("MEGA");
-	int frameCount = 1;
-	int duration = 10;
+	//auto texture = gameEngine->getAssets().getTexture("MEGA");
+	//int frameCount = 1;
+	//int duration = 10;
 
 	Vec2 position = {200, 200};
-	Vec2 velocity = {200, 200};
-	float angle = 0.0;
-	entity->cTransform = std::make_shared<CTransform>(position, velocity, angle);
+	entity->cTransform = std::make_shared<CTransform>(position);
 	entity->cBoundingBox = std::make_shared<CBoundingBox>(Vec2(64, 64));
-	//entity->cAnimation = std::make_shared<CAnimation>(*texture, frameCount, duration);
-	entity->cAnimation = gameEngine->getAssets().getAnimation("COINSPIN");
+	entity->cGravity = std::make_shared<CGravity>(0.01);
+	std::cout << "Getting the standing animation from assets\n";
+	entity->cAnimation = gameEngine->getAssets().getAnimation("MEGARUN");
 
 	m_player = entity;
 }
@@ -106,11 +105,38 @@ void ScenePlay::spawnPlayer(){
 
 void ScenePlay::update(){
 	sMovement();
+	sCollision();
 	sRender();
 }
 
+void ScenePlay::sCollision(){
+	auto & tiles = m_entityManager.getEntities(tile);
+	for (auto & t : tiles){
+		if (doCollide(m_player, t)){
+			std::cout << "Player Collided with a tile\n";
+		}
+	}
+}
+
+bool ScenePlay::doCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
+	// Vertical collision
+	bool vCollision = (e1->cTransform->pos.y > e2->cTransform->pos.y - e2->cBoundingBox->box.y && \
+	e2->cTransform->pos.y > e1->cTransform->pos.y - e1->cBoundingBox->box.y);
+
+	bool hCollision = (e1->cTransform->pos.x > e2->cTransform->pos.x - e2->cBoundingBox->box.x && \
+	e2->cTransform->pos.x > e1->cTransform->pos.x - e1->cBoundingBox->box.x);
+
+	return (vCollision && hCollision);
+}
+
 void ScenePlay::sMovement(){
-	;
+	auto & entities =  m_entityManager.getEntities();
+	for (auto & e : entities){
+		if (e->cTransform){
+			e->cTransform->pos += e->cTransform->velocity;
+			if (e->cGravity){e->cTransform->velocity.y += e->cGravity->gravity;}
+		}
+	}
 }
 
 void ScenePlay::sRender(){
@@ -118,17 +144,6 @@ void ScenePlay::sRender(){
 	gameEngine->window().draw(m_title);
 	//std::cout << "Getting player's sprite\n";
 	//gameEngine->window().draw(m_player->cAnimation->animation.getSprite());
-
-	auto & entities = m_entityManager.getEntities(tile);
-	for (auto & tile : entities){
-		tile->cAnimation->update();
-		if (tile->cTransform){
-			Vec2 pos = tile->cTransform->pos;
-			tile->cAnimation->getSprite().setPosition(pos.x, pos.y);
-		}
-		gameEngine->window().draw(tile->cAnimation->getSprite());
-		//std::cout << "Entity drawn\n";
-	}
 
 	auto & decorations = m_entityManager.getEntities(decoration);
 	for (auto & dec : decorations){
@@ -140,6 +155,22 @@ void ScenePlay::sRender(){
 		gameEngine->window().draw(dec->cAnimation->getSprite());
 		//std::cout << "Entity drawn\n";
 	}
+
+	auto & entities = m_entityManager.getEntities(tile);
+	for (auto & tile : entities){
+		tile->cAnimation->update();
+		if (tile->cTransform){
+			Vec2 pos = tile->cTransform->pos;
+			tile->cAnimation->getSprite().setPosition(pos.x, pos.y);
+		}
+		gameEngine->window().draw(tile->cAnimation->getSprite());
+		//std::cout << "Entity drawn\n";
+	}
+	m_player->cAnimation->update();
+	Vec2 pos = m_player->cTransform->pos;
+	m_player->cAnimation->getSprite().setPosition(pos.x, pos.y);
+	gameEngine->window().draw(m_player->cAnimation->getSprite());
+
 	//gameEngine->window().draw(m_entityManager.getEntities())
 	//std::cout << "player drawn\n";
 	gameEngine->window().display();

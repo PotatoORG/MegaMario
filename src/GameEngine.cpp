@@ -13,9 +13,6 @@ GameEngine::GameEngine(const std::string & gameConfigPath){
 	//m_assets.addFont("FONT", "include/BebasNeue-Regular.ttf");
 	changeScene("MENU", std::make_shared<SceneMenu>(this));
 	//std::cout << "menu scene made and back to gameEngine\n";
-
-
-
 }
 
 void GameEngine::run(){

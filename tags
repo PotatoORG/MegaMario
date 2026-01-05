@@ -28,11 +28,14 @@ CAnimation	include/Components.h	/^class CAnimation{$/;"	c
 CBoundingBox	include/Components.h	/^		CBoundingBox(Vec2 box) : box(box) {}$/;"	f	class:CBoundingBox
 CBoundingBox	include/Components.h	/^class CBoundingBox{$/;"	c
 CC	Makefile	/^CC = g++$/;"	m
+CGravity	include/Components.h	/^	CGravity(float gravity)$/;"	f	class:CGravity
+CGravity	include/Components.h	/^class CGravity{$/;"	c
 CH	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
 CLifeSpan	include/Components.h	/^	CLifeSpan(float span)$/;"	f	class:CLifeSpan
 CLifeSpan	include/Components.h	/^class CLifeSpan{$/;"	c
 COMPONENTS_H	include/Components.h	/^#define COMPONENTS_H$/;"	d
 CTag	include/Components.h	/^enum CTag{$/;"	g
+CTransform	include/Components.h	/^		CTransform(Vec2 pos)$/;"	f	class:CTransform
 CTransform	include/Components.h	/^		CTransform(Vec2 pos, Vec2 vel, float angle)$/;"	f	class:CTransform
 CTransform	include/Components.h	/^class CTransform{$/;"	c
 CW	include/ScenePlay.h	/^	float CW, CH, SX, SY, SM, G;};$/;"	m	struct:PlayerConfig	typeref:typename:float
@@ -94,10 +97,12 @@ box	include/Components.h	/^		Vec2 box;$/;"	m	class:CBoundingBox	typeref:typename
 bullet	include/Components.h	/^	bullet,$/;"	e	enum:CTag
 cAnimation	include/Entity.h	/^	std::shared_ptr<Animation> cAnimation;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<Animation>
 cBoundingBox	include/Entity.h	/^	std::shared_ptr<CBoundingBox> cBoundingBox;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CBoundingBox>
+cGravity	include/Entity.h	/^	std::shared_ptr<CGravity> cGravity;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CGravity>
 cLifeSpan	include/Entity.h	/^	std::shared_ptr<CLifeSpan> 	cLifeSpan;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CLifeSpan>
 cTransform	include/Entity.h	/^	std::shared_ptr<CTransform> cTransform;$/;"	m	class:Entity	typeref:typename:std::shared_ptr<CTransform>
 changeScene	src/GameEngine.cpp	/^void GameEngine::changeScene(const std::string & sceneName, std::shared_ptr<Scene> s){$/;"	f	class:GameEngine	typeref:typename:void
 clean	Makefile	/^clean :$/;"	t
+decoration	include/Components.h	/^	decoration$/;"	e	enum:CTag
 defaultTag	include/Components.h	/^	defaultTag,$/;"	e	enum:CTag
 destroy	src/Entity.cpp	/^void Entity::destroy(){$/;"	f	class:Entity	typeref:typename:void
 distance	src/Vec2.cpp	/^float Vec2::distance(const Vec2& a) const{$/;"	f	class:Vec2	typeref:typename:float
@@ -118,6 +123,7 @@ getScene	src/GameEngine.cpp	/^std::shared_ptr<Scene> GameEngine::getScene(const 
 getSize	src/Animation.cpp	/^Vec2 & Animation::getSize(){$/;"	f	class:Animation	typeref:typename:Vec2 &
 getSprite	src/Animation.cpp	/^sf::Sprite	& Animation::getSprite(){$/;"	f	class:Animation	typeref:typename:sf::Sprite &
 getTexture	src/Assets.cpp	/^std::shared_ptr<sf::Texture> Assets::getTexture(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Texture>
+gravity	include/Components.h	/^	float gravity = 0;$/;"	m	class:CGravity	typeref:typename:float
 hasEnded	src/Animation.cpp	/^bool Animation::hasEnded(){$/;"	f	class:Animation	typeref:typename:bool
 id	src/Entity.cpp	/^size_t Entity::id() const{$/;"	f	class:Entity	typeref:typename:size_t
 initial	include/Components.h	/^	float initial;$/;"	m	class:CLifeSpan	typeref:typename:float
@@ -183,6 +189,7 @@ run	src/GameEngine.cpp	/^void GameEngine::run(){$/;"	f	class:GameEngine	typeref:
 sMovement	src/ScenePlay.cpp	/^void ScenePlay::sMovement(){$/;"	f	class:ScenePlay	typeref:typename:void
 sRender	src/ScenePlay.cpp	/^void ScenePlay::sRender(){$/;"	f	class:ScenePlay	typeref:typename:void
 sUserInput	src/GameEngine.cpp	/^void GameEngine::sUserInput(){$/;"	f	class:GameEngine	typeref:typename:void
+spawnDecoration	src/ScenePlay.cpp	/^void ScenePlay::spawnDecoration(const std::string & animationName, float x, float y){$/;"	f	class:ScenePlay	typeref:typename:void
 spawnPlayer	src/ScenePlay.cpp	/^void ScenePlay::spawnPlayer(){$/;"	f	class:ScenePlay	typeref:typename:void
 spawnTile	src/ScenePlay.cpp	/^void ScenePlay::spawnTile(const std::string & animationName, int GX, int GY){$/;"	f	class:ScenePlay	typeref:typename:void
 src/Animation.o	Makefile	/^src\/Animation.o : src\/Animation.cpp $/;"	t
@@ -197,7 +204,7 @@ src/Vec2.o	Makefile	/^src\/Vec2.o : src\/Vec2.cpp$/;"	t
 src/main.o	Makefile	/^src\/main.o : src\/main.cpp$/;"	t
 tag	src/Entity.cpp	/^const CTag& Entity::tag() const{$/;"	f	class:Entity	typeref:typename:const CTag &
 text	include/Components.h	/^	text,$/;"	e	enum:CTag
-tile	include/Components.h	/^	tile$/;"	e	enum:CTag
+tile	include/Components.h	/^	tile,$/;"	e	enum:CTag
 type	include/Action.h	/^	eActionType type;$/;"	m	class:Action	typeref:typename:eActionType
 update	src/Animation.cpp	/^void Animation::update(){$/;"	f	class:Animation	typeref:typename:void
 update	src/EntityManager.cpp	/^void EntityManager::update(){$/;"	f	class:EntityManager	typeref:typename:void

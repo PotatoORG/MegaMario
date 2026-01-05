@@ -54,4 +54,11 @@ public:
 		: remaining (span), initial (span) {}
 };
 
+class CGravity{
+public:
+	float gravity;
+	CGravity(float gravity)
+		: gravity(gravity) {}
+};
+
 #endif

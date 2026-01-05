@@ -1,5 +1,14 @@
 font FONT include/BebasNeue-Regular.ttf
-texture MEGA assets/images/megaman/megaStand64.png
+texture MEGASTAND assets/images/megaman/megaStand64.png
+texture MEGAJUMP assets/images/megaman/megaJump64.png
+texture MEGARUN assets/images/megaman/megaRun64.png
+texture MEGASHOT assets/images/megaman/megaShot64.png
+texture MEGASLIT assets/images/megaman/megaSlit64.png
+animation MEGASTAND MEGASTAND 1 1
+animation MEGAJUMP MEGAJUMP 1 1
+animation MEGARUN MEGARUN 3 5
+animation MEGASHOT MEGASHOT 1 1
+animation MEGASLIT MEGASLIT 1 1
 texture GROUND assets/images/mario/ground64.png
 texture COIN assets/images/animations/coinspin64.png
 texture EXPLOSION assets/images/animations/explosion.png

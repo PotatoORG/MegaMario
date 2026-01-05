@@ -16,6 +16,7 @@ public:
 	std::shared_ptr<CBoundingBox> cBoundingBox;
 	std::shared_ptr<CLifeSpan> 	cLifeSpan;
 	std::shared_ptr<Animation> cAnimation;
+	std::shared_ptr<CGravity> cGravity;
 
 	size_t id() const;
 	const CTag& tag() const;

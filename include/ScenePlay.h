@@ -25,6 +25,8 @@ public:
 
 	void sRender(); // Systems
 	void sMovement();
+	void sCollision();
+	bool doCollide(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b);
 	ScenePlay(GameEngine * ge, const std::string &);
 };
 #endif // SCENEPLAY_H
