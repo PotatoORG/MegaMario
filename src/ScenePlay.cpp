@@ -116,9 +116,14 @@ void ScenePlay::update(){
 void ScenePlay::sCollision(){
 	auto & tiles = m_entityManager.getEntities(tile);
 	for (auto & t : tiles){
-		if (doCollide(m_player, t)){
-			Vec2 overlap = getOverlap(m_player, t);
-			std::cout << "Collision horizontal : " << overlap.x << " vertical : " << overlap.y << "\n";
+//		if (doCollide(m_player, t)){
+//			Vec2 overlap = getOverlap(m_player, t);
+//			std::cout << "Collision horizontal : " << overlap.x << " vertical : " << overlap.y << "\n";
+//		}
+		if (doCollide(m_player, t) && getPreviousOverlap(m_player, t).y <= 0 && getOverlap(m_player, t).y > 0){
+			std::cout << "collision from top detected\n";
+			m_player->cTransform->velocity.y = 0;
+			m_player->cTransform->pos.y -= getOverlap(m_player, t).y;
 		}
 	}
 }
@@ -135,8 +140,27 @@ bool ScenePlay::doCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2
 	return (vCollision && hCollision);
 }
 
+bool ScenePlay::didCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
+	// Vertical collision
+	bool hCollision = (e1->cTransform->prevPos.y  - e1->cBoundingBox->box.y/2 < e2->cTransform->prevPos.y + e2->cBoundingBox->box.y/2 && \
+	e2->cTransform->prevPos.y - e2->cBoundingBox->box.y/2 < e1->cTransform->prevPos.y + e1->cBoundingBox->box.y/2);
+
+	// Horizontal collision
+	bool vCollision = (e1->cTransform->prevPos.x + e1->cBoundingBox->box.x/2 > e2->cTransform->prevPos.x - e2->cBoundingBox->box.x/2 && \
+	e2->cTransform->prevPos.x + e2->cBoundingBox->box.x/2 > e1->cTransform->prevPos.x - e1->cBoundingBox->box.x/2);
+
+	return (vCollision && hCollision);
+}
+
 Vec2 ScenePlay::getOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
 	Vec2 delta = e1->cTransform->pos - e2->cTransform->pos;
+	delta = {std::abs(delta.x), std::abs(delta.y)};
+	Vec2 overlap = e1->cBoundingBox->box/2 + e2->cBoundingBox->box/2 - delta;
+	return overlap;
+}
+
+Vec2 ScenePlay::getPreviousOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
+	Vec2 delta = e1->cTransform->prevPos - e2->cTransform->prevPos;
 	delta = {std::abs(delta.x), std::abs(delta.y)};
 	Vec2 overlap = e1->cBoundingBox->box/2 + e2->cBoundingBox->box/2 - delta;
 	return overlap;
@@ -146,8 +170,11 @@ void ScenePlay::sMovement(){
 	auto & entities =  m_entityManager.getEntities();
 	for (auto & e : entities){
 		if (e->cTransform){
+			e->cTransform->prevPos = e->cTransform->pos;
 			e->cTransform->pos += e->cTransform->velocity;
 			if (e->cGravity){e->cTransform->velocity.y += e->cGravity->gravity;}
+			// TODO
+			// cap velocity at max velocity
 		}
 	}
 }
