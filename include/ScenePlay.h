@@ -27,6 +27,7 @@ public:
 	void sMovement();
 	void sCollision();
 	bool doCollide(std::shared_ptr<Entity> a, std::shared_ptr<Entity> b);
+	Vec2 getOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2);
 	ScenePlay(GameEngine * ge, const std::string &);
 };
 #endif // SCENEPLAY_H

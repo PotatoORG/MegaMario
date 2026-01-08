@@ -2,6 +2,7 @@
 #include "GameEngine.h"
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 ScenePlay::ScenePlay(GameEngine * ge, const std::string & levelConfigPath){
 	gameEngine = ge;
@@ -68,12 +69,14 @@ void ScenePlay::makeLevel(const std::string & levelConfigPath){
 void ScenePlay::spawnTile(const std::string & animationName, int GX, int GY){
 	auto t = m_entityManager.addEntity(tile);
 	t->cAnimation = gameEngine->getAssets().getAnimation(animationName);
-	int x = 64*GX;
-	int y = 720 - 64 - 64*GY;
+	int x = 64*GX + 64/2;
+	int y = 720 - 64 - 64*GY + 64/2;
 	t->cTransform = std::make_shared<CTransform>(Vec2(x, y));
 	t->cAnimation->getSprite().setPosition(x, y);
 	//std::cout << "Tile created at (" << GX << ", " << GY << ") in grid and (" << x << ", " << y << ") in window\n"; 
 	t->cBoundingBox = std::make_shared<CBoundingBox>(Vec2(64, 64));
+	t->cAnimation->getSprite().setOrigin(t->cAnimation->getSprite().getTextureRect().width/2, t->cAnimation->getSprite().getTextureRect().height/2);
+	//t->cAnimation->getSprite().setOrigin(x + t->cBoundingBox->box.x/2, y + t->cBoundingBox->box.y/2);
 }
 
 void ScenePlay::spawnDecoration(const std::string & animationName, float x, float y){
@@ -98,6 +101,7 @@ void ScenePlay::spawnPlayer(){
 	entity->cGravity = std::make_shared<CGravity>(0.01);
 	std::cout << "Getting the standing animation from assets\n";
 	entity->cAnimation = gameEngine->getAssets().getAnimation("MEGARUN");
+	entity->cAnimation->getSprite().setOrigin(entity->cAnimation->getSprite().getTextureRect().width/2, entity->cAnimation->getSprite().getTextureRect().height/2);
 
 	m_player = entity;
 }
@@ -113,21 +117,29 @@ void ScenePlay::sCollision(){
 	auto & tiles = m_entityManager.getEntities(tile);
 	for (auto & t : tiles){
 		if (doCollide(m_player, t)){
-			std::cout << "Player Collided with a tile\n";
+			Vec2 overlap = getOverlap(m_player, t);
+			std::cout << "Collision horizontal : " << overlap.x << " vertical : " << overlap.y << "\n";
 		}
 	}
 }
 
 bool ScenePlay::doCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
 	// Vertical collision
-	bool vCollision = (e1->cTransform->pos.y > e2->cTransform->pos.y - e2->cBoundingBox->box.y && \
-	e2->cTransform->pos.y > e1->cTransform->pos.y - e1->cBoundingBox->box.y);
+	bool hCollision = (e1->cTransform->pos.y  - e1->cBoundingBox->box.y/2 < e2->cTransform->pos.y + e2->cBoundingBox->box.y/2 && \
+	e2->cTransform->pos.y - e2->cBoundingBox->box.y/2 < e1->cTransform->pos.y + e1->cBoundingBox->box.y/2);
 
 	// Horizontal collision
-	bool hCollision = (e1->cTransform->pos.x > e2->cTransform->pos.x - e2->cBoundingBox->box.x && \
-	e2->cTransform->pos.x > e1->cTransform->pos.x - e1->cBoundingBox->box.x);
+	bool vCollision = (e1->cTransform->pos.x + e1->cBoundingBox->box.x/2 > e2->cTransform->pos.x - e2->cBoundingBox->box.x/2 && \
+	e2->cTransform->pos.x + e2->cBoundingBox->box.x/2 > e1->cTransform->pos.x - e1->cBoundingBox->box.x/2);
 
 	return (vCollision && hCollision);
+}
+
+Vec2 ScenePlay::getOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){
+	Vec2 delta = e1->cTransform->pos - e2->cTransform->pos;
+	delta = {std::abs(delta.x), std::abs(delta.y)};
+	Vec2 overlap = e1->cBoundingBox->box/2 + e2->cBoundingBox->box/2 - delta;
+	return overlap;
 }
 
 void ScenePlay::sMovement(){
