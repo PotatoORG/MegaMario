@@ -218,11 +218,17 @@ void ScenePlay::sRender(){
 }
 
 void ScenePlay::registerActions(){
-	Scene::registerAction(sf::Keyboard::W, {JUMP, START});
-	Scene::registerAction(sf::Keyboard::Space, {SHOOT, START});
-	Scene::registerAction(sf::Keyboard::Escape, {PAUSE, START});
-	Scene::registerAction(sf::Keyboard::D, {RIGHT, START});
-	Scene::registerAction(sf::Keyboard::A, {LEFT, START});
+	Scene::registerAction(sf::Keyboard::W, true, {JUMP, START});
+	Scene::registerAction(sf::Keyboard::Space, true, {SHOOT, START});
+	Scene::registerAction(sf::Keyboard::Escape, true,  {PAUSE, START});
+	Scene::registerAction(sf::Keyboard::D, true,  {RIGHT, START});
+	Scene::registerAction(sf::Keyboard::A, true,  {LEFT, START});
+
+	Scene::registerAction(sf::Keyboard::W, false, {JUMP, END});
+	Scene::registerAction(sf::Keyboard::Space, false, {SHOOT, END});
+	//Scene::registerAction(sf::Keyboard::Escape, false,  {PAUSE, END});
+	Scene::registerAction(sf::Keyboard::D, false,  {RIGHT, END});
+	Scene::registerAction(sf::Keyboard::A, false,  {LEFT, END});
 }
 
 void ScenePlay::doAction(Action a){

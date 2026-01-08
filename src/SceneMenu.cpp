@@ -9,10 +9,10 @@ SceneMenu::SceneMenu(GameEngine *ge){
 	gameEngine->window().clear(sf::Color::Blue);
 	gameEngine->window().display();
 
-	Scene::registerAction(sf::Keyboard::W, {UP, START});
-	Scene::registerAction(sf::Keyboard::S, {DOWN, START});
-	Scene::registerAction(sf::Keyboard::Escape, {EXIT, START});
-	Scene::registerAction(sf::Keyboard::D, {PLAY, START});
+	Scene::registerAction(sf::Keyboard::W, true, {UP, START});
+	Scene::registerAction(sf::Keyboard::S, true,  {DOWN, START});
+	Scene::registerAction(sf::Keyboard::Escape, true,  {EXIT, START});
+	Scene::registerAction(sf::Keyboard::D, true, {PLAY, START});
 
 	m_font = *(gameEngine->getAssets().getFont("FONT"));
 	//m_font.loadFromFile("include/BebasNeue-Regular.ttf");

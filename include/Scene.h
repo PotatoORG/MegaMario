@@ -7,7 +7,7 @@
 #include <SFML/Window.hpp>
 #include <memory>
 
-typedef std::map<sf::Keyboard::Key, Action> ActionMap;
+typedef std::map<std::pair<sf::Keyboard::Key, bool>, Action> ActionMap;
 
 
 class GameEngine;
@@ -23,7 +23,7 @@ public:
 	virtual void update() = 0; // Will be overrided by the derived class
 	virtual void doAction(Action) = 0; // Will be overrided by the derived class
 	//virtual void m_sRender() = 0;
-	void registerAction(sf::Keyboard::Key, Action);
+	void registerAction(sf::Keyboard::Key, bool, Action);
 	ActionMap & getActionMap();
 	virtual ~Scene() = default;
 };

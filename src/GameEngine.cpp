@@ -61,7 +61,7 @@ void GameEngine::sUserInput(){
 		if (event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) {
 			// if the current scene does not have an action associated with this key,
 			// skip the event
-			if (m_currentScene->getActionMap().find(event.key.code) == m_currentScene->getActionMap().end()){
+			if (m_currentScene->getActionMap().find(std::make_pair(event.key.code, event.type == sf::Event::KeyPressed)) == m_currentScene->getActionMap().end()){
 				continue;
 			}
 
@@ -69,7 +69,7 @@ void GameEngine::sUserInput(){
 			eActionType actionType = (event.type == sf::Event::KeyPressed) ? eActionType::START : eActionType::END;
 
 			// look up the action and send the action to the scene
-			m_currentScene->doAction(Action(m_currentScene->getActionMap()[event.key.code].name, actionType));
+			m_currentScene->doAction(Action(m_currentScene->getActionMap()[std::make_pair(event.key.code, event.type == sf::Event::KeyPressed)].name, actionType));
 		}
 	}
 
