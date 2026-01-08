@@ -123,6 +123,7 @@ bool ScenePlay::doCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2
 	bool vCollision = (e1->cTransform->pos.y > e2->cTransform->pos.y - e2->cBoundingBox->box.y && \
 	e2->cTransform->pos.y > e1->cTransform->pos.y - e1->cBoundingBox->box.y);
 
+	// Horizontal collision
 	bool hCollision = (e1->cTransform->pos.x > e2->cTransform->pos.x - e2->cBoundingBox->box.x && \
 	e2->cTransform->pos.x > e1->cTransform->pos.x - e1->cBoundingBox->box.x);
 

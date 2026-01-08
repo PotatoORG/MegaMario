@@ -108,6 +108,7 @@ destroy	src/Entity.cpp	/^void Entity::destroy(){$/;"	f	class:Entity	typeref:type
 distance	src/Vec2.cpp	/^float Vec2::distance(const Vec2& a) const{$/;"	f	class:Vec2	typeref:typename:float
 doAction	src/SceneMenu.cpp	/^void SceneMenu::doAction(Action a){$/;"	f	class:SceneMenu	typeref:typename:void
 doAction	src/ScenePlay.cpp	/^void ScenePlay::doAction(Action a){$/;"	f	class:ScenePlay	typeref:typename:void
+doCollide	src/ScenePlay.cpp	/^bool ScenePlay::doCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){$/;"	f	class:ScenePlay	typeref:typename:bool
 eActionName	include/Action.h	/^enum eActionName{$/;"	g
 eActionType	include/Action.h	/^enum eActionType{$/;"	g
 enemy	include/Components.h	/^	enemy,$/;"	e	enum:CTag
@@ -123,7 +124,7 @@ getScene	src/GameEngine.cpp	/^std::shared_ptr<Scene> GameEngine::getScene(const 
 getSize	src/Animation.cpp	/^Vec2 & Animation::getSize(){$/;"	f	class:Animation	typeref:typename:Vec2 &
 getSprite	src/Animation.cpp	/^sf::Sprite	& Animation::getSprite(){$/;"	f	class:Animation	typeref:typename:sf::Sprite &
 getTexture	src/Assets.cpp	/^std::shared_ptr<sf::Texture> Assets::getTexture(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Texture>
-gravity	include/Components.h	/^	float gravity = 0;$/;"	m	class:CGravity	typeref:typename:float
+gravity	include/Components.h	/^	float gravity;$/;"	m	class:CGravity	typeref:typename:float
 hasEnded	src/Animation.cpp	/^bool Animation::hasEnded(){$/;"	f	class:Animation	typeref:typename:bool
 id	src/Entity.cpp	/^size_t Entity::id() const{$/;"	f	class:Entity	typeref:typename:size_t
 initial	include/Components.h	/^	float initial;$/;"	m	class:CLifeSpan	typeref:typename:float
@@ -186,6 +187,7 @@ registerActions	src/ScenePlay.cpp	/^void ScenePlay::registerActions(){$/;"	f	cla
 remaining	include/Components.h	/^	float remaining;$/;"	m	class:CLifeSpan	typeref:typename:float
 removeDeadEntities	src/EntityManager.cpp	/^void EntityManager::removeDeadEntities(){$/;"	f	class:EntityManager	typeref:typename:void
 run	src/GameEngine.cpp	/^void GameEngine::run(){$/;"	f	class:GameEngine	typeref:typename:void
+sCollision	src/ScenePlay.cpp	/^void ScenePlay::sCollision(){$/;"	f	class:ScenePlay	typeref:typename:void
 sMovement	src/ScenePlay.cpp	/^void ScenePlay::sMovement(){$/;"	f	class:ScenePlay	typeref:typename:void
 sRender	src/ScenePlay.cpp	/^void ScenePlay::sRender(){$/;"	f	class:ScenePlay	typeref:typename:void
 sUserInput	src/GameEngine.cpp	/^void GameEngine::sUserInput(){$/;"	f	class:GameEngine	typeref:typename:void
