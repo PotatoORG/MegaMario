@@ -42,14 +42,12 @@ void ScenePlay::makeLevel(const std::string & levelConfigPath){
 		file >> temp;
 		if (temp == "tile"){
 			file >> N >> GX >> GY;
-			// TODO
-			// ADD TILE ENTITY AND SET ITS POSITION.
 			spawnTile(N, GX, GY);
+
 		} else if (temp == "dec"){
 			file >> N >> X >> Y;
-			// TODO
-			// ADD DEC ENTITY AND SET ITS POSITION.
 			spawnDecoration(N, X, Y);
+
 		} else if (temp == "player"){
 			file >> m_playerConfig.GX \
 				>> m_playerConfig.GY \
@@ -61,7 +59,7 @@ void ScenePlay::makeLevel(const std::string & levelConfigPath){
 				>> m_playerConfig.G \
 				>> m_playerConfig.B;
 		} else {
-			std::cout << "Invalid config for level\n";
+			std::cout << "Invalid config for level : " << temp << " \n";
 		}
 	}
 }
@@ -97,8 +95,8 @@ void ScenePlay::spawnPlayer(){
 
 	Vec2 position = {200, 200};
 	entity->cTransform = std::make_shared<CTransform>(position);
-	entity->cBoundingBox = std::make_shared<CBoundingBox>(Vec2(64, 64));
-	entity->cGravity = std::make_shared<CGravity>(0.01);
+	entity->cBoundingBox = std::make_shared<CBoundingBox>(Vec2(40, 40));
+	entity->cGravity = std::make_shared<CGravity>(0.8);
 	std::cout << "Getting the standing animation from assets\n";
 	entity->cAnimation = gameEngine->getAssets().getAnimation("MEGARUN");
 	entity->cAnimation->getSprite().setOrigin(entity->cAnimation->getSprite().getTextureRect().width/2, entity->cAnimation->getSprite().getTextureRect().height/2);
@@ -115,15 +113,31 @@ void ScenePlay::update(){
 
 void ScenePlay::sCollision(){
 	auto & tiles = m_entityManager.getEntities(tile);
+	m_player->isOnGround = false;
+
 	for (auto & t : tiles){
 //		if (doCollide(m_player, t)){
 //			Vec2 overlap = getOverlap(m_player, t);
 //			std::cout << "Collision horizontal : " << overlap.x << " vertical : " << overlap.y << "\n";
 //		}
-		if (doCollide(m_player, t) && getPreviousOverlap(m_player, t).y <= 0 && getOverlap(m_player, t).y > 0){
-			std::cout << "collision from top detected\n";
+		if (doCollide(m_player, t) && getPreviousOverlap(m_player, t).y <= 0){
+			//std::cout << "collision from top detected\n";
 			m_player->cTransform->velocity.y = 0;
 			m_player->cTransform->pos.y -= getOverlap(m_player, t).y;
+
+			if (m_player->cTransform->pos.y < t->cTransform->pos.y){
+				m_player->isOnGround = true;
+			}
+		}
+		//&& getOverlap(m_player, t).x > 0)
+		if (doCollide(m_player, t) && getPreviousOverlap(m_player, t).x <= 0) {
+			//std::cout << "collision from top detected\n";
+			m_player->cTransform->velocity.x = 0;
+			if (m_player->cTransform->pos.x  > t->cTransform->pos.x){
+				m_player->cTransform->pos.x += getOverlap(m_player, t).x;
+			} else {
+				m_player->cTransform->pos.x -= getOverlap(m_player, t).x;
+			}
 		}
 	}
 }
@@ -165,14 +179,15 @@ Vec2 ScenePlay::getPreviousOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<E
 	Vec2 overlap = e1->cBoundingBox->box/2 + e2->cBoundingBox->box/2 - delta;
 	return overlap;
 }
+// Negative overlap means no collision and positive overlap means collision. Also, the axis with smaller positive overlap is the axis of collision.
 
 void ScenePlay::sMovement(){
 	auto & entities =  m_entityManager.getEntities();
 	for (auto & e : entities){
 		if (e->cTransform){
 			e->cTransform->prevPos = e->cTransform->pos;
-			e->cTransform->pos += e->cTransform->velocity;
 			if (e->cGravity){e->cTransform->velocity.y += e->cGravity->gravity;}
+			e->cTransform->pos += e->cTransform->velocity;
 			// TODO
 			// cap velocity at max velocity
 		}
@@ -235,15 +250,39 @@ void ScenePlay::doAction(Action a){
 	switch (a.name){
 		case (JUMP):
 			std::cout << "JUMP Action passed.\n";
+			//bool collisionFromTop = doCollide(m_player, t) && getPreviousOverlap(m_player, t).y <= 0 && getOverlap(m_player, t).y > 0;
+			if (a.type == eActionType::START){
+				//if (m_player->cTransform->pos.y == m_player->cTransform->prevPos.y){
+				if (m_player->isOnGround){
+					m_player->cTransform->velocity.y = -20;
+					std::cout << "Player jumped\n";
+				} else {
+					std::cout << "Player cannot jump (Not on Ground)\n";
+				}
+			} else {
+				if(m_player->cTransform->velocity.y < 0){
+					m_player->cTransform->velocity.y = 0;
+				}
+			}
 			break;
 		case (SHOOT):
 			std::cout << "SHOOT Action passed.\n";
 			break;
 		case (LEFT):
 			std::cout << "LEFT Action passed.\n";
+			if (a.type == eActionType::START){
+				m_player->cTransform->velocity.x = -4;
+			} else {
+				m_player->cTransform->velocity.x = 0;
+			}
 			break;
 		case (RIGHT):
 			std::cout << "RIGHT Action passed.\n";
+			if (a.type == eActionType::START){
+				m_player->cTransform->velocity.x = 4;
+			} else {
+				m_player->cTransform->velocity.x = 0;
+			}
 			break;
 		case (PAUSE):
 			std::cout << "PAUSE Action passed.\n";

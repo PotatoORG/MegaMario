@@ -41,6 +41,9 @@ void SceneMenu::doAction(Action a){
 			break;
 		case (EXIT):
 			std::cout << "EXIT Action passed.\n";
+			gameEngine->window().close();
+			gameEngine->quit();
+			
 			break;
 		case (PLAY):
 			std::cout << "PLAY Action passed.\n";

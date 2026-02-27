@@ -15,7 +15,7 @@ ASSETS_H	include/Assets.h	/^#define ASSETS_H$/;"	d
 Action	include/Action.h	/^	Action() {}$/;"	f	class:Action
 Action	include/Action.h	/^	Action(eActionName name, eActionType type) : name(name), type(type) {}$/;"	f	class:Action
 Action	include/Action.h	/^class Action{$/;"	c
-ActionMap	include/Scene.h	/^typedef std::map<sf::Keyboard::Key, Action> ActionMap;$/;"	t	typeref:typename:std::map<sf::Keyboard::Key,Action>
+ActionMap	include/Scene.h	/^typedef std::map<std::pair<sf::Keyboard::Key, bool>, Action> ActionMap;$/;"	t	typeref:typename:std::map<std::pair<sf::Keyboard::Key,bool>,Action>
 Animation	include/Animation.h	/^class Animation{$/;"	c
 Animation	src/Animation.cpp	/^Animation::Animation() {}$/;"	f	class:Animation
 Animation	src/Animation.cpp	/^Animation::Animation(sf::Texture & texture, size_t frameCount, size_t duration)$/;"	f	class:Animation
@@ -105,6 +105,7 @@ clean	Makefile	/^clean :$/;"	t
 decoration	include/Components.h	/^	decoration$/;"	e	enum:CTag
 defaultTag	include/Components.h	/^	defaultTag,$/;"	e	enum:CTag
 destroy	src/Entity.cpp	/^void Entity::destroy(){$/;"	f	class:Entity	typeref:typename:void
+didCollide	src/ScenePlay.cpp	/^bool ScenePlay::didCollide(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){$/;"	f	class:ScenePlay	typeref:typename:bool
 distance	src/Vec2.cpp	/^float Vec2::distance(const Vec2& a) const{$/;"	f	class:Vec2	typeref:typename:float
 doAction	src/SceneMenu.cpp	/^void SceneMenu::doAction(Action a){$/;"	f	class:SceneMenu	typeref:typename:void
 doAction	src/ScenePlay.cpp	/^void ScenePlay::doAction(Action a){$/;"	f	class:ScenePlay	typeref:typename:void
@@ -120,6 +121,8 @@ getAssets	src/GameEngine.cpp	/^Assets & GameEngine::getAssets(){$/;"	f	class:Gam
 getEntities	src/EntityManager.cpp	/^EntityVec& EntityManager::getEntities(){$/;"	f	class:EntityManager	typeref:typename:EntityVec &
 getEntities	src/EntityManager.cpp	/^EntityVec& EntityManager::getEntities(CTag tag){$/;"	f	class:EntityManager	typeref:typename:EntityVec &
 getFont	src/Assets.cpp	/^std::shared_ptr<sf::Font> Assets::getFont(const std::string & name){$/;"	f	class:Assets	typeref:typename:std::shared_ptr<sf::Font>
+getOverlap	src/ScenePlay.cpp	/^Vec2 ScenePlay::getOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){$/;"	f	class:ScenePlay	typeref:typename:Vec2
+getPreviousOverlap	src/ScenePlay.cpp	/^Vec2 ScenePlay::getPreviousOverlap(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2){$/;"	f	class:ScenePlay	typeref:typename:Vec2
 getScene	src/GameEngine.cpp	/^std::shared_ptr<Scene> GameEngine::getScene(const std::string & sceneName){$/;"	f	class:GameEngine	typeref:typename:std::shared_ptr<Scene>
 getSize	src/Animation.cpp	/^Vec2 & Animation::getSize(){$/;"	f	class:Animation	typeref:typename:Vec2 &
 getSprite	src/Animation.cpp	/^sf::Sprite	& Animation::getSprite(){$/;"	f	class:Animation	typeref:typename:sf::Sprite &
@@ -176,13 +179,14 @@ operator +	src/Vec2.cpp	/^Vec2 Vec2::operator + (const Vec2& rhs) const{$/;"	f	c
 operator +=	src/Vec2.cpp	/^void Vec2::operator += (const Vec2& rhs){$/;"	f	class:Vec2	typeref:typename:void
 operator -	src/Vec2.cpp	/^Vec2 Vec2::operator - (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
 operator -=	src/Vec2.cpp	/^void Vec2::operator -= (const Vec2& rhs){$/;"	f	class:Vec2	typeref:typename:void
+operator /	src/Vec2.cpp	/^Vec2 Vec2::operator \/ (const float& rhs) const{$/;"	f	class:Vec2	typeref:typename:Vec2
 operator ==	src/Vec2.cpp	/^bool Vec2::operator == (const Vec2& rhs) const{$/;"	f	class:Vec2	typeref:typename:bool
 player	include/Components.h	/^	player,$/;"	e	enum:CTag
 pos	include/Components.h	/^		Vec2 pos = {0.0, 0.0};$/;"	m	class:CTransform	typeref:typename:Vec2
 prevPos	include/Components.h	/^		Vec2 prevPos = {0.0, 0.0};$/;"	m	class:CTransform	typeref:typename:Vec2
 print	src/Vec2.cpp	/^void Vec2::print() const{$/;"	f	class:Vec2	typeref:typename:void
 quit	src/GameEngine.cpp	/^void GameEngine::quit(){$/;"	f	class:GameEngine	typeref:typename:void
-registerAction	src/Scene.cpp	/^void Scene::registerAction(sf::Keyboard::Key key, Action a){$/;"	f	class:Scene	typeref:typename:void
+registerAction	src/Scene.cpp	/^void Scene::registerAction(sf::Keyboard::Key key, bool pressed, Action a){$/;"	f	class:Scene	typeref:typename:void
 registerActions	src/ScenePlay.cpp	/^void ScenePlay::registerActions(){$/;"	f	class:ScenePlay	typeref:typename:void
 remaining	include/Components.h	/^	float remaining;$/;"	m	class:CLifeSpan	typeref:typename:float
 removeDeadEntities	src/EntityManager.cpp	/^void EntityManager::removeDeadEntities(){$/;"	f	class:EntityManager	typeref:typename:void

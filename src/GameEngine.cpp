@@ -24,8 +24,8 @@ void GameEngine::run(){
 }
 
 void GameEngine::update(){
-	sUserInput();
 	m_currentScene->update();
+	sUserInput();
 	m_currentFrame++;
 }
 

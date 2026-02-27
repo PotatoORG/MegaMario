@@ -21,6 +21,7 @@ public:
 	size_t id() const;
 	const CTag& tag() const;
 	bool isAlive() const;
+	bool isOnGround = false;
 	void destroy();
 };
 #endif
